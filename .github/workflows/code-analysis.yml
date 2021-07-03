@@ -1,0 +1,28 @@
+name: Code Analysis
+
+on: pull_request
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+       node: ['14.15']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-suggest --no-progress
+
+      - name: "Static Analysis"
+        run: composer run psalm
