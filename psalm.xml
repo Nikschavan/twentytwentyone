@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<psalm
+	ensureArrayStringOffsetsExist="true"
+	reportMixedIssues="false"
+	errorLevel="1"
+	>
+    <projectFiles>
+		<directory name="./"/>
+        <file name="functions.php"/>
+        <ignoreFiles>
+            <directory name="vendor/"/>
+        </ignoreFiles>
+    </projectFiles>
+    <plugins>
+        <pluginClass xmlns="https://getpsalm.org/schema/config" class="PsalmWordPress\Plugin"/>
+    </plugins>
+</psalm>
